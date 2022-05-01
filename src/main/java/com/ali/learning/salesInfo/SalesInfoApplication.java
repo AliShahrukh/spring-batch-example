@@ -1,13 +1,13 @@
-package com.ali.learning.batch;
+package com.ali.learning.salesInfo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BatchApplication {
+public class SalesInfoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BatchApplication.class, args);
+		SpringApplication.run(SalesInfoApplication.class, args);
 	}
 
 }

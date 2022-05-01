@@ -1,10 +1,10 @@
-package com.ali.learning.batch;
+package com.ali.learning.salesInfo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BatchApplicationTests {
+class SalesInfoApplicationTests {
 
 	@Test
 	void contextLoads() {
