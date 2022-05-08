@@ -15,6 +15,7 @@ public class SalesInfoItemProcessor implements ItemProcessor<SalesInfoDTO, Sales
 
     @Override
     public SalesInfo process(SalesInfoDTO salesInfoDTO) throws Exception {
+        Thread.sleep(2000);
         return salesInfoMapper.mapToEntity(salesInfoDTO);
     }
 }
