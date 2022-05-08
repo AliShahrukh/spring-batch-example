@@ -16,6 +16,8 @@ import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.task.TaskExecutor;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import javax.persistence.EntityManagerFactory;
 
@@ -43,6 +45,7 @@ public class SalesInfoJobConfig {
                 .reader(salesInfoFileReader())
                 .processor(salesInfoItemProcessor)
                 .writer(salesInfoItemWriter())
+                .taskExecutor(taskExecutor())
                 .build();
     }
 
@@ -65,5 +68,14 @@ public class SalesInfoJobConfig {
         return new JpaItemWriterBuilder<SalesInfo>()
                 .entityManagerFactory(entityManagerFactory)
                 .build();
+    }
+
+    public TaskExecutor taskExecutor() {
+        ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
+        threadPoolTaskExecutor.setCorePoolSize(5);
+        threadPoolTaskExecutor.setMaxPoolSize(5);
+        threadPoolTaskExecutor.setQueueCapacity(10);
+        threadPoolTaskExecutor.setThreadNamePrefix("Thread N -> : ");
+        return threadPoolTaskExecutor;
     }
 }
