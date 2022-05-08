@@ -25,6 +25,7 @@ public class SalesInfoJobConfig {
                 .delimited()
                 .delimiter(",")
                 .names(new String[]{"product,seller,sellerId,price,city,category"})
+                .linesToSkip(1)
                 .targetType(SalesInfoDTO.class)
                 .build();
 
